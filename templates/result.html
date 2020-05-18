@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Movie Recommender</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{{url_for ('static', filename = 'assets/css/main.css')}} " />
+		<noscript><link rel="stylesheet" href="{{url_for ('static', filename = 'assets/css/noscript.css')}} " /></noscript>
+
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="index.html"><strong>Movie </strong> Recommender </a></h1>
+						<nav>
+							<ul>
+								<li><a href="#footer" class="icon solid fa-info-circle">How it works ?</a></li>
+							</ul>
+						</nav>
+					</header>
+
+				<!-- Main -->
+					<div id="main">
+            {% for i in range(8) %}
+						<article class="thumb">
+							<a href="{{movie2[i]}}" class="image"><img src="{{movie2[i]}}" alt="" target="_blank" ></a>
+							<h2 style="font-size: 15px;">{{movie0[i]}}</h2>
+							<p>   <li style="font-size: 110%;">Genre : <em><b>{{movie5[i]}} </b></em> </li>
+								  <li style="font-size: 110%;">Average Rating :  <b>{{movie6[i]}}</b></li>
+								  <li style="font-size: 110%;"> Number of user votes : <em><b>{{movie7[i]}}</b></em></li>
+								  <li style="font-size: 110%;"> Released Year : <em><b>{{movie4[i]}}</b></em> </li>
+								  <li style="font-size: 110%;"> Runtime : <em><b>{{movie8[i]}}</b>  minutes</em></li>
+								      <li style="font-size: 100%;"> Plot : <em><b>{{movie9[i]}}</b></em> </li>
+								   <br><br><a target="_blank" href="{{movie1[i]}}"> Find more in IMDB </a> 
+								      </p>
+							
+							
+						
+						
+							<div class="youtube" style="display:block;height:100%;vertical-align:bottom; padding-bottom: 20px;">
+								
+								<iframe  src="{{movie3[i]}}" frameborder="0" allowfullscreen="True" autoplay="True"></iframe>
+							</div></article>
+            {% endfor %}
+						
+						
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer" class="panel">
+						<div class="inner split">
+							<div>
+								<section>
+									<h2>Magna feugiat sed adipiscing</h2>
+									<p>This is an experimental machine learning project . This similarity prediction is done using cosine similarity .....</p>
+								</section>
+								<section>
+									<h2>Follow me on ...</h2>
+									<ul class="icons">
+										
+										<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+										<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+										<li><a href="#" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+									</ul>
+								</section>
+								
+							</div>
+
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="{{ url_for('static', filename='jquery.min.js') }}"></script>
+			<script src="{{ url_for('static', filename='jquery.poptrox.min.js') }}"></script>
+			<script src="{{ url_for('static', filename='browser.min.js') }}"></script>
+			<script src="{{ url_for('static', filename='breakpoints.min.js') }}"></script>
+			<script src="{{ url_for('static', filename='util.js') }}"></script>
+			<script src="{{ url_for('static', filename='main2.js') }}"></script>
+
+	</body>
+</html>
