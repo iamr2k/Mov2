@@ -1,6 +1,6 @@
 ﻿from flask import Flask,render_template,url_for,request
 import pandas as pd
-from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.feature_extraction.text import movieVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 df = pd.read_csv('dataset.csv')
 
@@ -22,16 +22,16 @@ def predict():
         message = request.form.get('message')
         message = message.replace(",",' ')
         print(message)
-        tfidf_vectorizer = TfidfVectorizer()
+        movie_vectorizer = movieVectorizer()
         df.content = df.content.str.replace('[','')
         df.content = df.content.str.replace(']','')
         df.content = df.content.str.replace("'",'')
 
-        tfidf_matrix = tfidf_vectorizer.fit_transform(tuple(df.content.astype(str)))
+        moviematrix = movie_vectorizer.fit_transform(tuple(df.content.astype(str)))
         question = message
-        query_vect = tfidf_vectorizer.transform([question])
+        q_vect = movie_vectorizer.transform([question])
             
-        similarity = cosine_similarity(query_vect, tfidf_matrix)
+        similarity = cosine_similarity(q_vect, moviematrix)
         top_5_simmi = similarity[0].argsort()[-8:][::-1]
 
         result = []
